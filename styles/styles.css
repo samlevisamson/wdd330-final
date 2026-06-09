@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #2ECC71;
+  }
+  
+  .site-header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+  
+  .features {
+    max-width: 1200px;
+    margin: 3rem auto;
+  
+    display: grid;
+  
+    grid-template-columns:
+      repeat(auto-fit, minmax(250px, 1fr));
+  
+    gap: 1.5rem;
+  
+    padding: 1rem;
+  }
+  
+  .card {
+    background: white;
+  
+    border-radius: 12px;
+  
+    padding: 2rem;
+  
+    text-align: center;
+  
+    box-shadow:
+      0 2px 8px rgba(0,0,0,0.1);
+  
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #f2f2f2;
+  }
