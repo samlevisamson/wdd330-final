@@ -475,6 +475,14 @@ footer {
     gap: .5rem;
   }
 
+  .site-header nav {
+    display: none !important;
+  }
+  
+  #main-nav.nav-open {
+    display: flex !important;
+  }
+
   .menu-button {
     display: block;
     background: none;
@@ -495,7 +503,7 @@ footer {
   }
 
   #main-nav {
-    display: none;
+    display: none !important;
     position: absolute;
     top: 75px;
     left: 10px;
@@ -508,7 +516,7 @@ footer {
   }
 
   #main-nav.nav-open {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     animation: menuSlide .25s ease;
   }
