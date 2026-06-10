@@ -4,7 +4,7 @@
       "name": "Adjustable Dumbbells",
       "price": 4999,
       "category": "Strength",
-      "image": "../../images/dumbbell.jpg",
+      "image": "/images/dumbbell.jpg",
       "description": "Adjustable dumbbells for strength training."
     },
     {
@@ -12,7 +12,7 @@
       "name": "Yoga Mat",
       "price": 999,
       "category": "Yoga",
-      "image": "../../images/yoga-mat.jpg",
+      "image": "/images/yoga-mat.jpg",
       "description": "Comfortable non-slip yoga mat."
     },
     {
@@ -20,7 +20,7 @@
       "name": "Resistance Bands",
       "price": 799,
       "category": "Training",
-      "image": "../../images/resistance-band.jpg",
+      "image": "/images/resistance-band.jpg",
       "description": "Set of resistance bands for workouts."
     }
   ]

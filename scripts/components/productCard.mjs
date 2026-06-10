@@ -1,14 +1,20 @@
 export function productCard(product) {
-    return `
-      <article class="product-card">
-  
-        <h3>${product.name}</h3>
-  
-        <p>${product.category}</p>
-  
-        <p>₹${product.price}</p>
-  
-        <div class="product-actions">
+  return `
+    <article class="product-card">
+
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+        class="product-image"
+      >
+
+      <h3>${product.name}</h3>
+
+      <p>${product.category}</p>
+
+      <p>₹${product.price}</p>
+
+      <div class="product-actions">
 
         <button
           class="add-to-cart"
@@ -23,7 +29,7 @@ export function productCard(product) {
         </button>
 
       </div>
-  
-      </article>
-    `;
-  }
+
+    </article>
+  `;
+}
