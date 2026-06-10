@@ -1,24 +1,177 @@
+:root {
+
+  /* Primary Brand Color */
+  --primary-green: rgb(21, 128, 61);
+
+  /* Hover State */
+  --primary-green-dark: rgb(22, 101, 52);
+
+  /* Backgrounds */
+  --white: rgb(255, 255, 255);
+
+  --light-gray: rgb(248, 250, 252);
+
+  /* Text */
+  --text-primary: rgb(17, 24, 39);
+
+  --text-secondary: rgb(75, 85, 99);
+
+  /* Alerts */
+  --danger-red: rgb(185, 28, 28);
+
+  /* Shadows */
+  --shadow: rgba(0, 0, 0, 0.12);
+
+  /* Borders */
+  --border: rgb(209, 213, 219);
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .site-header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  background: #2ECC71;
+  align-items: center;
+
+  padding: 1rem 2rem;
+
+  background: var(--primary-green);
+
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
 }
 
 .site-header a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
-  margin-left: 1rem;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+
+  position: relative;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: .3s;
+}
+
+.nav-link:hover {
+
+  color: rgb(255, 245, 180);
+}
+
+.nav-link::after {
+
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: var(--white);
+  transition: width .3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.active-nav {
+  color: rgb(255, 245, 180);
+  font-weight: 700;
+}
+
+.active-nav::after {
+  width: 100%;
 }
 
 .hero {
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
+}
+
+.hero-image {
+
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+button {
+  background: var(--primary-green);
+
+  color: var(--white);
+
+  border: none;
+
+  border-radius: 8px;
+
+  padding: .75rem 1rem;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+button:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+}
+
+input {
+  padding: .75rem;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+}
+
+.logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: .75rem;
+
+  color: var(--white);
+
+  font-size: 1.25rem;
+
+  font-weight: 700;
+}
+
+.logo-image {
+
+  width: 42px;
+
+  height: 42px;
+
+  object-fit: contain;
+}
+
+.logo span {
+  color: var(--white);
 }
 
 .features {
@@ -34,9 +187,9 @@ body {
 
   padding: 1rem;
 }
-  
+
 .card {
-  background: white;
+  background: var(--white);
 
   border-radius: 12px;
 
@@ -45,7 +198,7 @@ body {
   text-align: center;
 
   box-shadow:
-    0 2px 8px rgba(0,0,0,0.1);
+    0 2px 8px var(--shadow);
 
   transition: 0.3s;
 }
@@ -55,14 +208,14 @@ body {
 }
 
 .product-card {
-  background: white;
+  background: var(--white);
 
   padding: 1rem;
 
   border-radius: 12px;
 
   box-shadow:
-    0 2px 8px rgba(0,0,0,.1);
+    0 2px 8px var(--shadow);
 
   transition: .3s;
 }
@@ -81,7 +234,7 @@ body {
 
   padding: 1rem;
 }
-  
+
 #workout-list {
   display: grid;
 
@@ -94,14 +247,14 @@ body {
 }
 
 .workout-card {
-  background: white;
+  background: var(--white);
 
   padding: 1rem;
 
   border-radius: 12px;
 
   box-shadow:
-    0 2px 8px rgba(0,0,0,.1);
+    0 2px 8px var(--shadow);
 
   transition: .3s;
 }
@@ -122,14 +275,14 @@ body {
 }
 
 .nutrition-card {
-  background: white;
+  background: var(--white);
 
   padding: 1rem;
 
   border-radius: 12px;
 
   box-shadow:
-    0 2px 8px rgba(0,0,0,.1);
+    0 2px 8px var(--shadow);
 
   max-width: 400px;
 }
@@ -150,9 +303,9 @@ body {
   margin-top: 2rem;
   padding: 1.5rem;
   border-radius: 12px;
-  background: white;
+  background: var(--white);
   box-shadow:
-    0 2px 8px rgba(0,0,0,.1);
+    0 2px 8px var(--shadow);
 }
 
 .card,
@@ -167,6 +320,38 @@ body {
 .nutrition-card:hover {
   transform:
     translateY(-5px);
+}
+
+.cart-grid, .wishList-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit,
+      minmax(350px, 1fr));
+
+  gap: 1.5rem;
+}
+  
+
+.cart-item,
+.wishlist-item {
+
+  background: var(--white);
+
+  padding: 1.5rem;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 2px 8px var(--shadow);
+}
+
+.cart-icon {
+
+  width: 36px;
+  height: 36px;
+  display: block;
 }
 
 .cart-container {
@@ -192,8 +377,9 @@ body {
 
   border-radius: 50%;
 
-  background: red;
-  color: white;
+  background: var(--danger-red);
+
+  color: var(--white);
 
   font-size: .75rem;
 
@@ -228,9 +414,85 @@ body {
     transform: scale(1);
   }
 }
-  
+
 footer {
   text-align: center;
   padding: 1rem;
-  background: #f2f2f2;
+  background: var(--light-gray);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+  }
+
+  .site-header a {
+    margin-left: 0;
+  }
+
+  #nutrition-form {
+    flex-direction: column;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  #equipment-list {
+    grid-template-columns: 1fr;
+  }
+
+  #workout-list {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card,
+  .workout-card,
+  .nutrition-card,
+  .bmi-card,
+  .cart-item,
+  .wishlist-item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cart-item button,
+  .wishlist-item button {
+    width: 100%;
+    margin-bottom: .5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .cart-container {
+    font-size: 1.5rem;
+  }
 }
