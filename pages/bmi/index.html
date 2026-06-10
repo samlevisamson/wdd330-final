@@ -11,13 +11,51 @@
   <div id="header"></div>
 
   <main>
-    <h1>BMI Page</h1>
-    <p>Coming Soon...</p>
+
+    <h1>BMI Calculator</h1>
+  
+    <form id="bmi-form">
+  
+      <div>
+        <label for="weight">
+          Weight (kg)
+        </label>
+  
+        <input
+          type="number"
+          id="weight"
+          min="1"
+          step="0.1"
+          required
+        >
+      </div>
+  
+      <div>
+        <label for="height">
+          Height (cm)
+        </label>
+  
+        <input
+          type="number"
+          id="height"
+          min="1"
+          step="0.1"
+          required
+        >
+      </div>
+  
+      <button type="submit">
+        Calculate BMI
+      </button>
+  
+    </form>
+  
+    <section id="bmi-result"></section>
+  
   </main>
+  <script type="module" src="../../scripts/main.js"></script>
+  <script type="module" src="../../scripts/pages/bmi-page.js"></script>
 
   <div id="footer"></div>
-
-  <script type="module" src="../../scripts/main.js"></script>
-
 </body>
 </html>
