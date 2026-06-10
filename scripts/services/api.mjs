@@ -10,7 +10,7 @@ const API_HOST = "exercisedb.p.rapidapi.com";
 
 export async function fetchExercises() {
   const response = await fetch(
-    "https://exercisedb.p.rapidapi.com/exercises?limit=12",
+    "https://exercisedb.p.rapidapi.com/exercises?limit=30&offset=0",
     {
       method: "GET",
       headers: {
@@ -24,7 +24,10 @@ export async function fetchExercises() {
     throw new Error("Failed to fetch exercises");
   }
 
-  return response.json();
+  const data = await response.json();
+  console.log(data);
+  return data;
+  
 }
 
 const EDAMAM_HOST =

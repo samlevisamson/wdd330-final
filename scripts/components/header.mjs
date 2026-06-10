@@ -10,7 +10,19 @@ export function renderHeader() {
         <a href="/pages/equipment/index.html">Equipment</a>
         <a href="/pages/bmi/index.html">BMI</a>
         <a href="/pages/profile/index.html">Profile</a>
-        <a href="/pages/cart/index.html">Cart</a>
+        <a
+          id="cart-link"
+          href="/pages/cart/index.html"
+          class="cart-container"
+        >
+          🛒
+          <span
+            id="cart-count"
+            class="cart-count"
+          >
+            0
+          </span>
+        </a>
       </nav>
     </header>
   `;

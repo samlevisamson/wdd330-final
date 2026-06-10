@@ -7,6 +7,11 @@ import { productCard }
 import { addToCart }
 from "../modules/cart.mjs";
 
+import {
+  addToWishlist
+}
+from "../modules/wishlist.mjs";
+
 function addCartListeners(products) {
 
   const buttons = document.querySelectorAll(".add-to-cart");
@@ -37,6 +42,43 @@ function addCartListeners(products) {
   });
 }
 
+function addWishlistListeners(products) {
+
+  const buttons =
+    document.querySelectorAll(
+      ".add-to-wishlist"
+    );
+
+  buttons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const id =
+          Number(
+            button.dataset.id
+          );
+
+        const product =
+          products.find(
+            item =>
+              item.id === id
+          );
+
+        addToWishlist(
+          product
+        );
+
+        alert(
+          `${product.name}
+          added to wishlist`
+        );
+      }
+    );
+  });
+}
+
 async function loadEquipment() {
 
   const equipment =
@@ -49,6 +91,10 @@ async function loadEquipment() {
     equipment.map(productCard).join("");
 
   addCartListeners(equipment);
+
+  addWishlistListeners(
+    equipment
+  );
 }
 
 loadEquipment();
