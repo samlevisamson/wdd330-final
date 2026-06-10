@@ -1,10 +1,10 @@
-import {
-  EXERCISE_API_KEY,
-  EDAMAM_API_KEY
-} from "../config.mjs";
 
-const API_KEY = EXERCISE_API_KEY;
-const EDAMAM_KEY = EDAMAM_API_KEY;
+
+const API_KEY =
+  import.meta.env.VITE_EXERCISE_API_KEY;
+
+const EDAMAM_KEY =
+  import.meta.env.VITE_EDAMAM_API_KEY;
 
 const API_HOST = "exercisedb.p.rapidapi.com";
 
