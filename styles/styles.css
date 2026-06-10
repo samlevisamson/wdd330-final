@@ -54,6 +54,85 @@ body {
     transform: translateY(-5px);
   }
   
+  .product-card {
+    background: white;
+  
+    padding: 1rem;
+  
+    border-radius: 12px;
+  
+    box-shadow:
+      0 2px 8px rgba(0,0,0,.1);
+  
+    transition: .3s;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  #equipment-list {
+    display: grid;
+  
+    grid-template-columns:
+      repeat(auto-fit, minmax(250px,1fr));
+  
+    gap: 1rem;
+  
+    padding: 1rem;
+  }
+  
+  #workout-list {
+    display: grid;
+  
+    grid-template-columns:
+      repeat(auto-fit, minmax(280px, 1fr));
+  
+    gap: 1rem;
+  
+    padding: 1rem;
+  }
+  
+  .workout-card {
+    background: white;
+  
+    padding: 1rem;
+  
+    border-radius: 12px;
+  
+    box-shadow:
+      0 2px 8px rgba(0,0,0,.1);
+  
+    transition: .3s;
+  }
+  
+  .workout-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .workout-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  #nutrition-form {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .nutrition-card {
+    background: white;
+  
+    padding: 1rem;
+  
+    border-radius: 12px;
+  
+    box-shadow:
+      0 2px 8px rgba(0,0,0,.1);
+  
+    max-width: 400px;
+  }
   
   footer {
     text-align: center;
