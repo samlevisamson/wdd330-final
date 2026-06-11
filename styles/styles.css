@@ -475,14 +475,6 @@ footer {
     gap: .5rem;
   }
 
-  .site-header nav {
-    display: none !important;
-  }
-  
-  #main-nav.nav-open {
-    display: flex !important;
-  }
-
   .menu-button {
     display: block;
     background: none;
@@ -502,23 +494,22 @@ footer {
     color: rgb(255, 212, 59);
   }
 
-  #main-nav {
-    display: none !important;
-    position: absolute;
-    top: 75px;
-    left: 10px;
-    width: 240px;
-    background: var(--primary-green);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px var(--shadow);
-    overflow: hidden;
-    z-index: 1000;
+  #main-nav{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:10px;
+    width:240px;
+    background:var(--primary-green);
+    border-radius:12px;
+    box-shadow:0 8px 20px var(--shadow);
+    overflow:hidden;
+    z-index:1000;
   }
-
-  #main-nav.nav-open {
-    display: flex !important;
-    flex-direction: column;
-    animation: menuSlide .25s ease;
+  
+  #main-nav.nav-open{
+    display:flex;
+    flex-direction:column;
   }
 
   #main-nav .nav-link {
@@ -562,6 +553,14 @@ footer {
 
   #nutrition-form {
     flex-direction: column;
+  }
+
+  .logo{
+    flex:1;
+  }
+  
+  .cart-container{
+    margin-left:auto;
   }
 
   .hero {
