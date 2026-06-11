@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Complete your purchase of fitness equipment securely through the Fitness Hub checkout page.">
+  <meta name="author" content="Sam Levi Samson">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Checkout | Fitness Hub</title>
+
+  <meta property="og:title" content="Checkout | Fitness Hub">
+  <meta property="og:description" content="Review your order and complete your Fitness Hub purchase.">
+  <meta property="og:image" content="https://wdd330-final-1z0w.onrender.com/images/hero1024.webp">
+  <meta property="og:url" content="https://wdd330-final-1z0w.onrender.com/pages/checkout/">
+
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="../../styles/styles.css">
+</head>
+
+<body>
+
+  <div id="header"></div>
+
+<main>
+
+  <h1>Secure Checkout</h1>
+
+  <p>
+    Complete your order and
+    start your fitness journey.
+  </p>
+  
+    <div class="checkout-grid">
+  
+      <section class="checkout-form">
+  
+        <h2>Billing Information</h2>
+  
+        <form id="checkout-form">
+  
+          <input
+            type="text"
+            id="name"
+            placeholder="Full Name"
+            required>
+  
+          <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            required>
+  
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Phone Number"
+            required>
+  
+          <input
+            type="text"
+            id="address"
+            placeholder="Address"
+            required>
+  
+          <input
+            type="text"
+            id="city"
+            placeholder="City"
+            required>
+  
+          <input
+            type="text"
+            id="state"
+            placeholder="State"
+            required>
+  
+          <input
+            type="text"
+            id="zip"
+            placeholder="ZIP Code"
+            required>
+
+            <h3>Payment Method</h3>
+
+            <label>
+              <input
+                type="radio"
+                name="payment"
+                value="upi"
+                checked>
+              UPI
+            </label>
+            
+            <label>
+              <input
+                type="radio"
+                name="payment"
+                value="card">
+              Credit / Debit Card
+            </label>
+            
+            <label>
+              <input
+                type="radio"
+                name="payment"
+                value="cod">
+              Cash on Delivery
+            </label>
+  
+          <button type="submit">
+            Place Order
+          </button>
+  
+        </form>
+  
+      </section>
+  
+      <section class="order-summary">
+  
+        <h2>Order Summary</h2>
+  
+        <div id="checkout-items"></div>
+  
+        <h3 id="checkout-total">
+          Total: ₹0
+        </h3>
+  
+      </section>
+  
+    </div>
+  
+  </main>
+
+  <div id="footer"></div>
+
+  <div id="order-modal" class="modal">
+
+    <div class="modal-content">
+  
+      <h2>✅ Order Confirmed</h2>
+  
+      <p>
+        Thank you for shopping with
+        Fitness Hub.
+      </p>
+  
+      <button id="close-order">
+        Continue
+      </button>
+  
+    </div>
+  
+  </div>
+
+  <script type="module" src="../../scripts/main.js"></script>
+  <script type="module" src="../../scripts/checkout.js"></script>
+</body>
+</html>

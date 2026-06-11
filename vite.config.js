@@ -35,6 +35,11 @@
           profile: resolve(
             __dirname,
             "pages/profile/index.html"
+          ),
+
+          checkout: resolve(
+            __dirname,
+            "pages/checkout/index.html"
           )
         }
       }

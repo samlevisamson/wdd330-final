@@ -45,31 +45,22 @@ async (event) => {
     results.innerHTML = `
         <div class="nutrition-card">
 
-        <h2>${item.label}</h2>
+            <h2>${item.label}</h2>
 
-        <p>
-            Calories:
-            ${item.nutrients.ENERC_KCAL || 0}
-        </p>
+            <p><strong>Serving Size:</strong> 100 g</p>
 
-        <p>
-            Protein:
-            ${item.nutrients.PROCNT || 0} g
-        </p>
+            <hr>
 
-        <p>
-            Carbs:
-            ${item.nutrients.CHOCDF || 0} g
-        </p>
+            <p><strong>Calories:</strong> ${item.nutrients.ENERC_KCAL || 0}</p>
 
-        <p>
-            Fat:
-            ${item.nutrients.FAT || 0} g
-        </p>
+            <p><strong>Protein:</strong> ${item.nutrients.PROCNT || 0} g</p>
+
+            <p><strong>Carbs:</strong> ${item.nutrients.CHOCDF || 0} g</p>
+
+            <p><strong>Fat:</strong> ${item.nutrients.FAT || 0} g</p>
 
         </div>
-    `;
-
+        `;
     } catch (error) {
 
     console.error("Nutrition Error:", error);

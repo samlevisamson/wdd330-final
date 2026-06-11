@@ -446,12 +446,141 @@ input {
   }
 }
 
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: var(--light-gray);
+.checkout-btn{
+  display:inline-block;
+  background:var(--primary-green);
+  color:var(--white);
+  padding:1rem 1.5rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  margin:1rem 0;
 }
 
+.checkout-btn:hover{
+  background:var(--primary-green-dark);
+}  
+
+footer{
+  margin-top:4rem;
+  background:var(--white);
+  border-top:1px solid var(--border);
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:2rem;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1.5fr;
+  gap:2rem;
+}
+
+.footer-brand{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.footer-logo{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+}
+
+.footer-brand p{
+  color:var(--text-secondary);
+  line-height:1.6;
+  margin:0;
+}
+
+.footer-column{
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+}
+
+.footer-column h3{
+  margin:0 0 .5rem;
+  color:var(--text-primary);
+}
+
+.footer-column a{
+  text-decoration:none;
+  color:var(--text-secondary);
+  transition:.3s;
+}
+
+.footer-column a:hover{
+  color:var(--primary-green);
+}
+
+.footer-column input{
+  margin-top:.5rem;
+}
+
+.footer-column button{
+  margin-top:.5rem;
+}
+
+.social{
+  display:flex;
+  gap:1rem;
+}
+
+.social img{
+  width:32px;
+  height:32px;
+  transition:.3s;
+}
+
+.social img:hover{
+  transform:translateY(-3px);
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-content{
+  background:var(--white);
+  padding:2rem;
+  border-radius:12px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  box-shadow:0 8px 20px var(--shadow);
+}
+
+.modal-content h2{
+  margin-top:0;
+  color:var(--primary-green);
+}
+
+.modal-content button{
+  margin-top:1rem;
+}
+
+.footer-bottom{
+  border-top:1px solid var(--border);
+  padding:1rem 2rem;
+  text-align:center;
+}
+
+.footer-bottom p{
+  margin:.25rem 0;
+  color:var(--text-secondary);
+}
 
 /* =========================
    TABLET & MOBILE
@@ -597,6 +726,37 @@ footer {
   .workout-card {
     margin-bottom: 1rem;
   }
+  
+
+  .footer-bottom{
+    flex-direction:column;
+    text-align:center;
+  }
+  
+  .footer-left,
+  .footer-right{
+    align-items:center;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  
+  .footer-brand{
+    align-items:center;
+  }
+  
+  .footer-column{
+    align-items:center;
+  }
+  
+  .social{
+    justify-content:center;
+  }
+
+ 
+
 }
 
 /* =========================
