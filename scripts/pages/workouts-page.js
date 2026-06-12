@@ -1,56 +1,56 @@
-import {
-  getWorkouts
-}
-from "../modules/workouts.mjs";
-
-import {
-  workoutCard
-}
-from "../components/workoutCard.mjs";
+import { getWorkouts } from "../modules/workouts.mjs";
+import { workoutCard } from "../components/workoutCard.mjs";
 
 let allWorkouts = [];
 
 function displayWorkouts(workouts) {
 
-  const container =
-    document.querySelector(
-      "#workout-list"
-    );
+  const container = document.querySelector("#workout-list");
 
   container.innerHTML =
     workouts
       .map(workoutCard)
       .join("");
+
 }
 
 async function loadWorkouts() {
 
-  allWorkouts =
-  await getWorkouts();
+  allWorkouts = await getWorkouts();
 
   allWorkouts =
     allWorkouts.filter(
       workout =>
-        workout.images &&
-        workout.images.length > 0
-  );
+        workout.images?.length > 0
+    );
 
   console.log(
     "Workout Count:",
     allWorkouts.length
   );
-  console.log(JSON.stringify(allWorkouts[0], null, 2));
-  console.log("Image URL:", allWorkouts[0].gifUrl);
+
+  console.log(
+    JSON.stringify(
+      allWorkouts[0],
+      null,
+      2
+    )
+  );
+
+  console.log(
+    "Image URL:",
+    allWorkouts[0]?.images?.[0]?.image
+  );
+
   displayWorkouts(allWorkouts);
+
 }
 
 document
-  .querySelector(
-    "#search-workout"
-  )
+  .querySelector("#search-workout")
   .addEventListener(
     "input",
-    (event) => {
+    event => {
 
       const search =
         event.target.value
@@ -58,13 +58,22 @@ document
 
       const filtered =
         allWorkouts.filter(
-          workout =>
-            workout.name
-              .toLowerCase()
-              .includes(search)
+          workout => {
+
+            const english =
+              workout.translations?.find(
+                t => t.language === 2
+              );
+
+            return english?.name
+              ?.toLowerCase()
+              .includes(search);
+
+          }
         );
 
       displayWorkouts(filtered);
+
     }
   );
 
