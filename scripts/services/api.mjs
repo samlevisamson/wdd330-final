@@ -16,7 +16,7 @@ export async function fetchExercises() {
 
   const response =
     await fetch(
-      "https://wger.de/api/v2/exerciseinfo/?limit=20",
+      "https://wger.de/api/v2/exerciseinfo/?limit=100",
       {
         headers: {
           Authorization:
@@ -60,8 +60,7 @@ export async function fetchExercises() {
       workout.translations?.some(
         translation =>
           translation.language === 2
-      ) &&
-      !workout.images[0].image.includes("trx")
+      ) 
   );
 
 }

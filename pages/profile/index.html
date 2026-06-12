@@ -19,13 +19,97 @@
   <div id="header"></div>
 
   <main>
-    <h1>Profile Page</h1>
-    <p>Coming Soon...</p>
+
+    <section class="profile-card">
+
+      <h1>My Profile</h1>
+
+      <div class="profile-info">
+
+        <p>
+          <strong>Name:</strong>
+          <span id="profile-name"></span>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <span id="profile-email"></span>
+        </p>
+
+      </div>
+
+      <hr>
+
+      <h2>Fitness Goals</h2>
+
+      <form id="profile-form">
+
+        <input
+          type="number"
+          id="height"
+          placeholder="Height (cm)">
+
+        <input
+          type="number"
+          id="weight"
+          placeholder="Weight (kg)">
+
+        <select id="goal">
+
+          <option value="">
+            Select Goal
+          </option>
+
+          <option value="Weight Loss">
+            Weight Loss
+          </option>
+
+          <option value="Muscle Gain">
+            Muscle Gain
+          </option>
+
+          <option value="Maintenance">
+            Maintenance
+          </option>
+
+        </select>
+
+        <button type="submit">
+          Save Profile
+        </button>
+
+      </form>
+
+      <p
+        id="profile-message"
+        class="success-message">
+      </p>
+
+      <hr>
+
+      <button
+        id="logout-btn"
+        class="logout-btn">
+
+        Logout
+
+      </button>
+
+    </section>
+
   </main>
 
   <div id="footer"></div>
 
-  <script type="module" src="../../scripts/main.js"></script>
+  <script
+    type="module"
+    src="../../scripts/main.js">
+  </script>
+
+  <script
+    type="module"
+    src="../../scripts/pages/profile.js">
+  </script>
 
 </body>
 </html>

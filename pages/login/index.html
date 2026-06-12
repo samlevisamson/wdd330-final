@@ -2,7 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Workouts</title>
+  <meta name="description" content="Sign in to your Fitness Hub account to access your profile, fitness progress, meal plans, and shopping history.">
+  <meta name="author" content="Sam Levi Samson">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login | Fitness Hub</title>
+
+  <meta property="og:title" content="Login | Fitness Hub">
+  <meta property="og:description" content="Securely sign in to your Fitness Hub account and continue your fitness journey.">
+  <meta property="og:image" content="https://wdd330-final-1z0w.onrender.com/images/hero1024.webp">
+  <meta property="og:url" content="https://wdd330-final-1z0w.onrender.com/pages/login/">
+
   <link rel="icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="../../styles/styles.css">
 </head>
@@ -11,13 +21,59 @@
   <div id="header"></div>
 
   <main>
-    <h1>Login Page</h1>
-    <p>Coming Soon...</p>
+
+    <section class="auth-container">
+  
+      <h1>Welcome Back</h1>
+  
+      <form
+        id="login-form"
+        class="auth-form">
+  
+        <input
+          type="email"
+          id="email"
+          placeholder="Email Address"
+          required>
+  
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required>
+  
+        <button type="submit">
+          Sign In
+        </button>
+  
+      </form>
+  
+      <p
+        id="login-message"
+        class="auth-message">
+      </p>
+  
+      <div class="auth-links">
+  
+        <p>
+          Don't have an account?
+        </p>
+  
+        <a href="/pages/register/index.html">
+          Sign Up
+        </a>
+  
+      </div>
+  
+    </section>
+  
   </main>
 
   <div id="footer"></div>
 
   <script type="module" src="../../scripts/main.js"></script>
+  <script type="module" src="../../scripts/pages/login.js">
+</script>
 
 </body>
 </html>

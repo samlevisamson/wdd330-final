@@ -19,43 +19,65 @@
   <div id="header"></div>
 
   <main>
-    <h1>Nutrition Search</h1>
 
-    <form id="nutrition-form">
-      <input
-        type="text"
-        id="food-input"
-        placeholder="Search food..."
-        required
-      >
-
-      <button type="submit">
-        Search
-      </button>
-    </form>
-
-    <section id="nutrition-results">
-
-    </section>
-
-    <section class="meal-planner">
-
-      <h2>Meal Planner</h2>
-    
-      <select id="meal-goal">
-        <option value="balanced">Balanced</option>
-        <option value="high-protein">High Protein</option>
-        <option value="low-carb">Low Carb</option>
-      </select>
-    
-      <button id="generate-meal-plan">
-        Generate Meal Plan
-      </button>
-    
-      <div id="meal-results"></div>
-    
-    </section>
-    
+    <div class="nutrition-layout">
+  
+      <!-- Calorie Search -->
+  
+      <section class="nutrition-section">
+  
+        <h2>Calorie Search</h2>
+  
+        <form id="nutrition-form">
+  
+          <input
+            type="text"
+            id="food-input"
+            placeholder="Enter food name"
+            required>
+  
+          <button type="submit">
+            Search
+          </button>
+  
+        </form>
+  
+        <div id="nutrition-results"></div>
+  
+      </section>
+  
+      <!-- Meal Planner -->
+  
+      <section class="meal-section">
+  
+        <h2>Meal Planner</h2>
+  
+        <select id="meal-goal">
+  
+          <option value="balanced">
+            Balanced
+          </option>
+  
+          <option value="high-protein">
+            High Protein
+          </option>
+  
+          <option value="low-carb">
+            Low Carb
+          </option>
+  
+        </select>
+  
+        <button id="generate-meal-plan">
+          Generate Meal Plan
+        </button>
+  
+        <div id="meal-results"></div>
+  
+      </section>
+  
+    </div>
+  
   </main>
 
   <div id="footer"></div>

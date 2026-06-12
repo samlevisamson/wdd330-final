@@ -1,13 +1,14 @@
-import {getLocalStorage,setLocalStorage} from "../services/storage.mjs";
-import {updateCartCount,animateCart} from "../modules/cartCounter.mjs";
-import {addToCart} from "../modules/cart.mjs";
-import {addToWishlist} from "../modules/wishlist.mjs";
+import { updateCartCount, animateCart } from "../modules/cartCounter.mjs";
+import { addToCart } from "../modules/cart.mjs";
+import { addToWishlist } from "../modules/wishlist.mjs";
+import { getUserCart, saveUserCart } from "../services/userCart.mjs";
+import { getUserWishlist, saveUserWishlist } from "../services/userWishlist.mjs";
 
-let cart = getLocalStorage("fitness-cart");
-let wishlist = getLocalStorage("fitness-wishlist");
+let cart = getUserCart();
+let wishlist = getUserWishlist();
 
 const container = document.querySelector("#cart-items");
-const wishlistContainer = document.querySelector("#wishlist-items"); 
+const wishlistContainer = document.querySelector("#wishlist-items");
 
 function renderCart() {
 
@@ -16,9 +17,7 @@ function renderCart() {
   container.innerHTML =
     cart.map(item => {
 
-      const subtotal =
-        item.price *
-        item.quantity;
+      const subtotal = item.price * item.quantity;
 
       total += subtotal;
 
@@ -27,311 +26,205 @@ function renderCart() {
 
           <h3>${item.name}</h3>
 
-          <p>
-            ₹${item.price}
-          </p>
+          <p>₹${item.price}</p>
 
-          <p>
-            Quantity:
-            ${item.quantity}
-          </p>
+          <p>Quantity: ${item.quantity}</p>
 
-          <p>
-            Subtotal:
-            ₹${subtotal}
-          </p>
+          <p>Subtotal: ₹${subtotal}</p>
 
-          <button
-            class="increase"
-            data-id="${item.id}">
-            +
-          </button>
+          <button class="increase" data-id="${item.id}">+</button>
 
-          <button
-            class="decrease"
-            data-id="${item.id}">
-            -
-          </button>
+          <button class="decrease" data-id="${item.id}">-</button>
 
-          <button
-            class="remove"
-            data-id="${item.id}">
-            Remove
-          </button>
+          <button class="remove" data-id="${item.id}">Remove</button>
 
-          <button
-            class="move-to-wishlist"
-            data-id="${item.id}">
-            ❤️ Wishlist
-          </button>
+          <button class="move-to-wishlist" data-id="${item.id}">❤️ Wishlist</button>
 
         </div>
       `;
+
     }).join("") +
 
     `
       <hr>
-
-      <h2>
-        Total: ₹${total}
-      </h2>
-
-      <button id="empty-cart">
-        Empty Cart
-      </button>
+      <h2>Total: ₹${total}</h2>
+      <button id="empty-cart">Empty Cart</button>
     `;
 
-  attachEvents();
+  attachCartEvents();
+
 }
 
 function renderWishlist() {
 
   wishlistContainer.innerHTML =
     wishlist.map(item => `
-
       <div class="wishlist-item">
 
-        <h3>
-          ${item.name}
-        </h3>
+        <h3>${item.name}</h3>
 
-        <p>
-          ₹${item.price}
-        </p>
+        <p>₹${item.price}</p>
 
-        <button
-          class="move-to-cart"
-          data-id="${item.id}">
+        <button class="move-to-cart" data-id="${item.id}">
           Move To Cart
         </button>
 
-        <button
-          class="remove-wishlist"
-          data-id="${item.id}">
+        <button class="remove-wishlist" data-id="${item.id}">
           Remove
         </button>
 
       </div>
-
     `).join("");
 
   attachWishlistEvents();
+
 }
 
-function attachEvents() {
+function attachCartEvents() {
 
-  document
-    .querySelectorAll(".increase")
+  document.querySelectorAll(".increase")
     .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      button.addEventListener("click", () => {
 
-          const item =
-            cart.find(
-            p =>
-              String(p.id) ===
-              button.dataset.id
-            );
+        const item = cart.find(item => String(item.id) === button.dataset.id);
 
-          console.log(item);
+        if (!item) return;
 
-          item.quantity++;
+        item.quantity++;
 
-          saveAndRender();
-        }
-      );
+        saveCart();
+
+      });
+
     });
 
-  document
-    .querySelectorAll(".decrease")
+  document.querySelectorAll(".decrease")
     .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      button.addEventListener("click", () => {
 
-          const item =
-            cart.find(
-              p =>
-                String(p.id) ===
-                button.dataset.id
-            );
+        const item = cart.find(item => String(item.id) === button.dataset.id);
 
-          console.log(item);
+        if (!item) return;
 
-          if (
-            item.quantity > 1
-          ) {
+        if (item.quantity > 1) {
 
-            item.quantity--;
+          item.quantity--;
 
-          }
-
-          saveAndRender();
         }
-      );
+
+        saveCart();
+
+      });
+
     });
 
-  document
-    .querySelectorAll(".remove")
+  document.querySelectorAll(".remove")
     .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      button.addEventListener("click", () => {
 
-          cart =
-            cart.filter(
-              item =>
-                String(item.id) !==
-                button.dataset.id
-            );
+        cart = cart.filter(item => String(item.id) !== button.dataset.id);
 
-          saveAndRender();
-        }
-      );
+        saveCart();
+
+      });
+
     });
 
-  document
-    .querySelector(
-      "#empty-cart"
-    )
-    ?.addEventListener(
-      "click",
-      () => {
+  document.querySelector("#empty-cart")
+    ?.addEventListener("click", () => {
 
-        cart = [];
+      cart = [];
 
-        saveAndRender();
-      }
-    );
+      saveCart();
 
-    document
-  .querySelectorAll(
-    ".move-to-wishlist"
-  )
-  .forEach(button => {
+    });
 
-    button.addEventListener(
-      "click",
-      () => {
+  document.querySelectorAll(".move-to-wishlist")
+    .forEach(button => {
 
-        const item =
-          cart.find(
-            product =>
-              String(product.id) ===
-              button.dataset.id
-          );
+      button.addEventListener("click", () => {
+
+        const item = cart.find(item => String(item.id) === button.dataset.id);
+
+        if (!item) return;
 
         addToWishlist(item);
 
-        cart =
-          cart.filter(
-            product =>
-              String(product.id) !==
-              button.dataset.id
-          );
+        cart = cart.filter(item => String(item.id) !== button.dataset.id);
 
-        saveAndRender();
+        wishlist = getUserWishlist();
 
-        wishlist =
-          getLocalStorage(
-            "fitness-wishlist"
-          );
+        saveCart();
 
         renderWishlist();
-      }
-    );
-  });
+
+      });
+
+    });
+
 }
 
 function attachWishlistEvents() {
 
-  document
-    .querySelectorAll(
-      ".move-to-cart"
-    )
+  document.querySelectorAll(".move-to-cart")
     .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      button.addEventListener("click", () => {
 
-          const item =
-            wishlist.find(
-              product =>
-                String(product.id) ===
-                button.dataset.id
-            );
+        const item = wishlist.find(item => String(item.id) === button.dataset.id);
 
-            addToCart(item);
+        if (!item) return;
 
-            cart =
-              getLocalStorage(
-                "fitness-cart"
-              );
-            
-            wishlist =
-              wishlist.filter(
-                product =>
-                  String(product.id) !==
-                  button.dataset.id
-              );
-            
-            renderCart();
-            
-            saveWishlist();
-        }
-      );
+        addToCart(item);
+
+        wishlist = wishlist.filter(item => String(item.id) !== button.dataset.id);
+
+        saveWishlist();
+
+        cart = getUserCart();
+
+        renderCart();
+
+      });
+
     });
 
-  document
-    .querySelectorAll(
-      ".remove-wishlist"
-    )
+  document.querySelectorAll(".remove-wishlist")
     .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      button.addEventListener("click", () => {
 
-          wishlist =
-            wishlist.filter(
-              product =>
-                String(product.id) !==
-                button.dataset.id
-            );
+        wishlist = wishlist.filter(item => String(item.id) !== button.dataset.id);
 
-          saveWishlist();
-        }
-      );
+        saveWishlist();
+
+      });
+
     });
+
 }
 
-function saveAndRender() {
+function saveCart() {
 
-  setLocalStorage(
-    "fitness-cart",
-    cart
-  );
+  saveUserCart(cart);
 
   updateCartCount();
 
   animateCart();
 
   renderCart();
+
 }
 
 function saveWishlist() {
 
-  setLocalStorage(
-    "fitness-wishlist",
-    wishlist
-  );
+  saveUserWishlist(wishlist);
 
   renderWishlist();
+
 }
 
 renderCart();

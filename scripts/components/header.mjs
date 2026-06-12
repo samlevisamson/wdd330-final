@@ -1,25 +1,19 @@
 export function renderHeader() {
+
+  const currentUser = JSON.parse(localStorage.getItem("current-user"));
+
+  const userLink = currentUser
+    ? `<a class="nav-link" href="/pages/profile/index.html"> ${currentUser.firstName}</a>`
+    : `<a class="nav-link" href="/pages/login/index.html">Login</a>`;
+
   return `
     <header class="site-header">
 
-      <button
-        id="menu-button"
-        class="menu-button"
-      >
-        ☰
-      </button>
+      <button id="menu-button" class="menu-button">☰</button>
 
       <div class="logo">
-
-        <img
-          src="/images/logo.png"
-          alt="Fitness Hub Logo"
-          class="logo-image">
-
-        <span>
-          Fitness Hub
-        </span>
-
+        <img src="/images/logo.png" alt="Fitness Hub Logo" class="logo-image">
+        <span>Fitness Hub</span>
       </div>
 
       <nav id="main-nav">
@@ -28,21 +22,17 @@ export function renderHeader() {
         <a class="nav-link" href="/pages/nutrition/index.html">Nutrition</a>
         <a class="nav-link" href="/pages/equipment/index.html">Equipment</a>
         <a class="nav-link" href="/pages/bmi/index.html">BMI</a>
-        <a class="nav-link" href="/pages/profile/index.html">Profile</a>
-        
+        ${userLink}
       </nav>
 
       <a id="cart-link" href="/pages/cart/index.html" class="cart-container">
-          <svg
-            class="cart-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640">
 
-            <path
-              fill="rgb(255, 212, 59)"
-              d="M0 72C0 58.7 10.7 48 24 48L69.3 48C96.4 48 119.6 67.4 124.4 94L124.8 96L312 96L312 198.1L281 167.1C271.6 157.7 256.4 157.7 247.1 167.1C237.8 176.5 237.7 191.7 247.1 201L319.1 273C328.5 282.4 343.7 282.4 353 273L425 201C434.4 191.6 434.4 176.4 425 167.1C415.6 157.8 400.4 157.7 391.1 167.1L360.1 198.1L360.1 96L537.5 96C557.5 96 572.6 114.2 568.9 133.9L537.8 299.8C532.1 330.1 505.7 352 474.9 352L171.3 352L176.4 380.3C178.5 391.7 188.4 400 200 400L456 400C469.3 400 480 410.7 480 424C480 437.3 469.3 448 456 448L200.1 448C165.3 448 135.5 423.1 129.3 388.9L77.2 102.6C76.5 98.8 73.2 96 69.3 96L24 96C10.7 96 0 85.3 0 72zM160 528C160 501.5 181.5 480 208 480C234.5 480 256 501.5 256 528C256 554.5 234.5 576 208 576C181.5 576 160 554.5 160 528zM384 528C384 501.5 405.5 480 432 480C458.5 480 480 501.5 480 528C480 554.5 458.5 576 432 576C405.5 576 384 554.5 384 528z"/></svg>
+        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+          <path fill="rgb(255, 212, 59)" d="M0 72C0 58.7 10.7 48 24 48L69.3 48C96.4 48 119.6 67.4 124.4 94L124.8 96L312 96L312 198.1L281 167.1C271.6 157.7 256.4 157.7 247.1 167.1C237.8 176.5 237.7 191.7 247.1 201L319.1 273C328.5 282.4 343.7 282.4 353 273L425 201C434.4 191.6 434.4 176.4 425 167.1C415.6 157.8 400.4 157.7 391.1 167.1L360.1 198.1L360.1 96L537.5 96C557.5 96 572.6 114.2 568.9 133.9L537.8 299.8C532.1 330.1 505.7 352 474.9 352L171.3 352L176.4 380.3C178.5 391.7 188.4 400 200 400L456 400C469.3 400 480 410.7 480 424C480 437.3 469.3 448 456 448L200.1 448C165.3 448 135.5 423.1 129.3 388.9L77.2 102.6C76.5 98.8 73.2 96 69.3 96L24 96C10.7 96 0 85.3 0 72zM160 528C160 501.5 181.5 480 208 480C234.5 480 256 501.5 256 528C256 554.5 234.5 576 208 576C181.5 576 160 554.5 160 528zM384 528C384 501.5 405.5 480 432 480C458.5 480 480 501.5 480 528C480 554.5 458.5 576 432 576C405.5 576 384 554.5 384 528z"/>
+        </svg>
 
-          <span id="cart-count" class="cart-count"> 0 </span>
+        <span id="cart-count" class="cart-count">0</span>
+
       </a>
 
     </header>

@@ -1,24 +1,11 @@
-import {
-  getLocalStorage,
-  setLocalStorage
-}
-from "../services/storage.mjs";
-
-import {
-  updateCartCount,
-  animateCart
-}
-from "./cartCounter.mjs";
+import { getUserCart, saveUserCart } from "../services/userCart.mjs";
+import { updateCartCount, animateCart } from "./cartCounter.mjs";
 
 export function addToCart(product) {
 
-  const cart =
-    getLocalStorage("fitness-cart");
+  const cart = getUserCart();
 
-  const existingItem =
-    cart.find(
-      item => item.id === product.id
-    );
+  const existingItem = cart.find(item => item.id === product.id);
 
   if (existingItem) {
 
@@ -30,14 +17,13 @@ export function addToCart(product) {
       ...product,
       quantity: 1
     });
+
   }
 
-  setLocalStorage(
-    "fitness-cart",
-    cart
-  );
+  saveUserCart(cart);
 
   updateCartCount();
 
   animateCart();
+
 }
