@@ -26,13 +26,21 @@ function displayWorkouts(workouts) {
 async function loadWorkouts() {
 
   allWorkouts =
-    await getWorkouts();
+  await getWorkouts();
+
+  allWorkouts =
+    allWorkouts.filter(
+      workout =>
+        workout.images &&
+        workout.images.length > 0
+  );
 
   console.log(
     "Workout Count:",
     allWorkouts.length
   );
-  console.log(allWorkouts[0]);
+  console.log(JSON.stringify(allWorkouts[0], null, 2));
+  console.log("Image URL:", allWorkouts[0].gifUrl);
   displayWorkouts(allWorkouts);
 }
 

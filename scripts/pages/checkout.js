@@ -1,13 +1,23 @@
+import {
+  getLocalStorage
+} from "../services/storage.mjs";
+
 const cart =
-  JSON.parse(
-    localStorage.getItem("cart")
+  getLocalStorage(
+    "fitness-cart"
   ) || [];
+  
 
-if (cart.length === 0) {
+console.log(cart);
+console.log("checkout loaded");
 
-  window.location.href =
-    "/pages/cart/index.html";
-}
+
+
+// if (cart.length === 0) {
+
+//   window.location.href =
+//     "/pages/cart/index.html";
+// }
 
 const itemsContainer =
   document.querySelector("#checkout-items");
@@ -19,15 +29,18 @@ let total = 0;
 
 cart.forEach(item => {
 
+  const quantity =
+    item.quantity || 1;
+
   const subtotal =
-    item.price * item.quantity;
+    item.price * quantity;
 
   total += subtotal;
 
   itemsContainer.innerHTML += `
     <p>
       ${item.name}
-      × ${item.quantity}
+      × ${quantity}
       — ₹${subtotal}
     </p>
   `;
@@ -63,10 +76,17 @@ document
 const orderNumber =
   "FH-" + Date.now();
 
-document.querySelector(
-  "#order-number"
-).textContent =
-  `Order #: ${orderNumber}`;
+const orderNumberElement =
+  document.querySelector(
+    "#order-number"
+  );
+
+if (orderNumberElement) {
+
+  orderNumberElement.textContent =
+    `Order #: ${orderNumber}`;
+
+}
 
 /* Close Modal */
 
@@ -77,7 +97,7 @@ document
     () => {
 
       localStorage.removeItem(
-        "cart"
+        "fitness-cart"
       );
 
       window.location.href =
@@ -85,3 +105,5 @@ document
 
     }
   );
+
+
