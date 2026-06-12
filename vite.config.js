@@ -1,47 +1,68 @@
-  import { defineConfig } from "vite";
-  import { resolve } from "path";
+import { defineConfig } from "vite";
+import { resolve } from "path";
 
-  export default defineConfig({
-    build: {
-      rollupOptions: {
-        input: {
-          main: resolve(__dirname, "index.html"),
+export default defineConfig({
 
-          workouts: resolve(
-            __dirname,
-            "pages/workouts/index.html"
-          ),
+  build: {
 
-          nutrition: resolve(
-            __dirname,
-            "pages/nutrition/index.html"
-          ),
+    rollupOptions: {
 
-          equipment: resolve(
-            __dirname,
-            "pages/equipment/index.html"
-          ),
+      input: {
 
-          bmi: resolve(
-            __dirname,
-            "pages/bmi/index.html"
-          ),
+        main: resolve(
+          __dirname,
+          "index.html"
+        ),
 
-          cart: resolve(
-            __dirname,
-            "pages/cart/index.html"
-          ),
+        workouts: resolve(
+          __dirname,
+          "pages/workouts/index.html"
+        ),
 
-          profile: resolve(
-            __dirname,
-            "pages/profile/index.html"
-          ),
+        nutrition: resolve(
+          __dirname,
+          "pages/nutrition/index.html"
+        ),
 
-          checkout: resolve(
-            __dirname,
-            "pages/checkout/index.html"
-          )
-        }
+        equipment: resolve(
+          __dirname,
+          "pages/equipment/index.html"
+        ),
+
+        bmi: resolve(
+          __dirname,
+          "pages/bmi/index.html"
+        ),
+
+        cart: resolve(
+          __dirname,
+          "pages/cart/index.html"
+        ),
+
+        checkout: resolve(
+          __dirname,
+          "pages/checkout/index.html"
+        ),
+
+        login: resolve(
+          __dirname,
+          "pages/login/index.html"
+        ),
+
+        register: resolve(
+          __dirname,
+          "pages/register/index.html"
+        ),
+
+        profile: resolve(
+          __dirname,
+          "pages/profile/index.html"
+        )
+
       }
+
     }
-  });
+
+  }
+
+});
