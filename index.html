@@ -22,26 +22,42 @@
 
     <section class="hero">
 
-      <picture>
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero1024.webp"
+      fetchpriority="high">
+      
+    <picture>
     
-        <source
-          media="(min-width: 1024px)"
-          srcset="/images/hero1024.webp">
+      <source
+        media="(min-width: 1024px)"
+        srcset="/images/hero1024.webp">
     
-        <source
-          media="(min-width: 720px)"
-          srcset="/images/hero720.webp">
+      <source
+        media="(min-width: 720px)"
+        srcset="/images/hero720.webp">
     
-        <source
-          media="(min-width: 640px)"
-          srcset="/images/hero640.webp">
+      <source
+        media="(min-width: 640px)"
+        srcset="/images/hero640.webp">
     
-        <img
-          src="/images/hero320.webp"
-          alt="Fitness training"
-          class="hero-image">
+      <img
+        src="/images/hero320.webp"
+        srcset="
+          /images/hero320.webp 320w,
+          /images/hero640.webp 640w,
+          /images/hero720.webp 720w,
+          /images/hero1024.webp 1024w
+        "
+        sizes="(min-width: 1024px) 1000px, 100vw"
+        alt="Fitness training"
+        class="hero-image"
+        width="1024"
+        height="576"
+        fetchpriority="high">
     
-      </picture>
+    </picture>
     
       <h1>
         Transform Your Fitness Journey

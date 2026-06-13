@@ -110,10 +110,10 @@ body {
 }
 
 .hero-image {
-
   width: 100%;
   max-width: 1000px;
   height: auto;
+  aspect-ratio: 1024 / 576;
   border-radius: 20px;
   margin-bottom: 2rem;
   box-shadow: 0 8px 20px var(--shadow);
