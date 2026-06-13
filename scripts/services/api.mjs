@@ -14,6 +14,11 @@ const EDAMAM_MEAL_KEY =
 
 export async function fetchExercises() {
 
+  console.log(
+    "WGER KEY:",
+    WGER_API_KEY
+  );
+
   const response =
     await fetch(
       "https://wger.de/api/v2/exerciseinfo/?limit=100",

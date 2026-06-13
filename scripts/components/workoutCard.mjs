@@ -1,8 +1,13 @@
 export function workoutCard(workout) {
 
   const image =
-    workout.images?.[0]?.image ||
-    "/images/workout-placeholder.jpg";
+  workout.images?.[0]?.image
+    ? workout.images[0].image.startsWith("http")
+      ? workout.images[0].image
+      : `https://wger.de${workout.images[0].image}`
+    : "/images/workout-placeholder.jpg";
+  
+  console.log(image);
 
   const name =
     workout.translations?.find(
