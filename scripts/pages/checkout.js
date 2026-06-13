@@ -1,29 +1,27 @@
 import {
-  getLocalStorage
-} from "../services/storage.mjs";
+  getUserCart,
+  saveUserCart
+} from "../services/userCart.mjs";
 
 const cart =
-  getLocalStorage(
-    "fitness-cart"
-  ) || [];
-  
+  getUserCart();
+
+console.log(
+  "Checkout Cart:",
+  cart
+);
 
 console.log(cart);
-console.log("checkout loaded");
-
-
-
-// if (cart.length === 0) {
-
-//   window.location.href =
-//     "/pages/cart/index.html";
-// }
 
 const itemsContainer =
-  document.querySelector("#checkout-items");
+  document.querySelector(
+    "#checkout-items"
+  );
 
 const totalContainer =
-  document.querySelector("#checkout-total");
+  document.querySelector(
+    "#checkout-total"
+  );
 
 let total = 0;
 
@@ -50,25 +48,23 @@ cart.forEach(item => {
 totalContainer.textContent =
   `Total: ₹${total}`;
 
-
 /* Place Order */
 
 document
   .querySelector("#checkout-form")
   ?.addEventListener(
     "submit",
-    (event) => {
+    event => {
 
       event.preventDefault();
 
-      const modal =
-        document.querySelector(
+      document
+        .querySelector(
           "#order-modal"
+        )
+        .classList.add(
+          "show"
         );
-
-      modal.classList.add(
-        "show"
-      );
 
     }
   );
@@ -96,14 +92,10 @@ document
     "click",
     () => {
 
-      localStorage.removeItem(
-        "fitness-cart"
-      );
+      saveUserCart([]);
 
       window.location.href =
         "/index.html";
 
     }
   );
-
-
